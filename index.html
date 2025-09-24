@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>李晨的简历 | 高级产品经理</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #f97316;
+            --background: #f4f7fb;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(120deg, #e0e7ff 0%, #fdf2f8 100%);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 48px 16px;
+        }
+
+        .resume {
+            background: #ffffff;
+            width: min(1080px, 100%);
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid rgba(37, 99, 235, 0.08);
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            position: relative;
+        }
+
+        .resume::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.4), transparent 60%);
+            z-index: 0;
+        }
+
+        aside {
+            background: linear-gradient(160deg, rgba(37, 99, 235, 0.9), rgba(59, 130, 246, 0.95));
+            color: #ffffff;
+            padding: 48px 36px 64px;
+            position: relative;
+            z-index: 1;
+        }
+
+        aside::after {
+            content: "";
+            position: absolute;
+            bottom: -120px;
+            left: 40px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.55), transparent 65%);
+            z-index: -1;
+        }
+
+        main {
+            padding: 48px 56px 64px 56px;
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 32px;
+            overflow: hidden;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+            margin-bottom: 24px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 6px 0 28px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        section + section {
+            margin-top: 32px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .section-title span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .contact-list,
+        .skill-list,
+        .tag-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 999px;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+        }
+
+        .skill {
+            margin-bottom: 18px;
+        }
+
+        .skill-title {
+            font-size: 14px;
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(120deg, #facc15, #f97316);
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 16px;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+        }
+
+        .headline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+
+        .headline .intro {
+            max-width: 60ch;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .experience, .projects, .education {
+            margin-bottom: 48px;
+        }
+
+        .item {
+            padding: 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(37, 99, 235, 0.08);
+            box-shadow: 0 18px 40px -20px rgba(30, 64, 175, 0.35);
+            background: rgba(255, 255, 255, 0.85);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item + .item {
+            margin-top: 24px;
+        }
+
+        .item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(37, 99, 235, 0.08), transparent 45%);
+            z-index: 0;
+        }
+
+        .item-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .item-subtitle {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .item-meta {
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.4px;
+        }
+
+        .item ul {
+            padding-left: 20px;
+            margin: 16px 0 0;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .item ul li + li {
+            margin-top: 6px;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .badge {
+            padding: 8px 14px;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.12);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .footer strong {
+            color: var(--primary);
+        }
+
+        @media (max-width: 960px) {
+            body {
+                padding: 32px 12px;
+            }
+
+            .resume {
+                grid-template-columns: 1fr;
+            }
+
+            aside {
+                text-align: center;
+            }
+
+            .contact-list li {
+                justify-content: center;
+            }
+
+            main {
+                padding: 36px 28px 48px;
+            }
+
+            .headline {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .headline .intro {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <aside>
+            <div class="avatar">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=facearea&w=400&h=400&q=80" alt="李晨头像" />
+            </div>
+            <h1>李晨</h1>
+            <h2>字节跳动 · 高级产品经理</h2>
+
+            <section>
+                <div class="section-title"><span>✉️</span> 联系方式</div>
+                <ul class="contact-list">
+                    <li>📱 +86 138 1234 5678</li>
+                    <li>📧 li.chen@bytedance.com</li>
+                    <li>💼 linkedin.com/in/lichenpm</li>
+                    <li>📍 北京 · 朝阳区</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="section-title"><span>🛠</span> 核心技能</div>
+                <div class="skill">
+                    <div class="skill-title">用户增长策略</div>
+                    <div class="progress-bar"><div class="progress" style="width: 92%"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-title">数据驱动分析</div>
+                    <div class="progress-bar"><div class="progress" style="width: 88%"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-title">跨团队协作</div>
+                    <div class="progress-bar"><div class="progress" style="width: 95%"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-title">商业化变现</div>
+                    <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-title"><span>🏅</span> 荣誉奖项</div>
+                <ul class="tag-list">
+                    <li class="tag">2022 年度最佳产品创新奖</li>
+                    <li class="tag">抖音 DAU 突破项目核心成员</li>
+                    <li class="tag">公司级“星耀计划”导师</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="section-title"><span>💡</span> 个人标签</div>
+                <ul class="tag-list">
+                    <li class="tag">增长黑客</li>
+                    <li class="tag">用户洞察</li>
+                    <li class="tag">创新引擎</li>
+                    <li class="tag">团队引导者</li>
+                </ul>
+            </section>
+        </aside>
+
+        <main>
+            <div class="headline">
+                <div>
+                    <div class="chip">持续打造用户喜爱的产品体验</div>
+                    <h1>李晨 · 8 年产品策略经验</h1>
+                </div>
+                <p class="intro">
+                    善于从数据与用户洞察中发现增长机会，擅长搭建完整的增长闭环。负责的产品累计服务超 5 亿用户，推动多项商业化创新，帮助公司实现营收与用户双增长。
+                </p>
+            </div>
+
+            <section class="experience">
+                <div class="section-title"><span>📈</span> 工作经历</div>
+
+                <div class="item">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">字节跳动 · 抖音</div>
+                                <div class="item-subtitle">高级产品经理 · 增长线</div>
+                            </div>
+                            <div class="item-meta">2019.07 - 至今 · 北京</div>
+                        </div>
+                        <ul>
+                            <li>主导抖音“兴趣电商”增长策略，通过 A/B 测试与精细化运营，实现 GMV 同比增长 240%。</li>
+                            <li>搭建用户生命周期运营模型，带领跨职能团队实现次留率提升 18%，日活新增 1500 万。</li>
+                            <li>推动商业化广告产品迭代，推出智能投放算法，帮助广告主 ROI 提升 32%。</li>
+                        </ul>
+                        <div class="badge-row">
+                            <span class="badge">OKR 评分 4.7/5</span>
+                            <span class="badge">18 人跨部门团队</span>
+                            <span class="badge">年度最佳导师</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">腾讯 · 微信支付</div>
+                                <div class="item-subtitle">产品经理 · 场景支付</div>
+                            </div>
+                            <div class="item-meta">2016.06 - 2019.06 · 深圳</div>
+                        </div>
+                        <ul>
+                            <li>负责智慧零售解决方案设计，推动“刷脸支付”落地 200+ 头部商超，交易额同比增长 180%。</li>
+                            <li>与数据科学团队合作，设计支付风控策略，异常交易识别率提升 45%。</li>
+                            <li>组织跨部门工作坊，优化支付体验流程，用户投诉率降低 60%。</li>
+                        </ul>
+                        <div class="badge-row">
+                            <span class="badge">新零售先锋奖</span>
+                            <span class="badge">支付体验官</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <div class="section-title"><span>🚀</span> 重点项目</div>
+                <div class="item">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <div class="item-title">抖音达人成长计划 3.0</div>
+                            <div class="item-meta">2021 - 2022</div>
+                        </div>
+                        <ul>
+                            <li>搭建达人成长路径体系，推出“创作者学院”课程，达人月收入提升 65%。</li>
+                            <li>上线创作者数据洞察面板，支持多维指标监控，达人留存率提升 22%。</li>
+                            <li>与商业化团队协作，形成内容变现闭环，平台广告收入提升 1.8 亿元。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <div class="item-title">腾讯智慧景区一体化方案</div>
+                            <div class="item-meta">2018 - 2019</div>
+                        </div>
+                        <ul>
+                            <li>整合支付、会员、营销、客服功能，打造一体化数字化运营平台。</li>
+                            <li>与 12 家头部景区合作试点，游客人均消费提升 38%，复购率提升 27%。</li>
+                            <li>获得腾讯互娱创新季“最佳业务协同奖”。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="education">
+                <div class="section-title"><span>🎓</span> 教育背景</div>
+                <div class="item">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">清华大学 · 经济管理学院</div>
+                                <div class="item-subtitle">工商管理硕士（MBA）</div>
+                            </div>
+                            <div class="item-meta">2014.09 - 2016.06</div>
+                        </div>
+                        <ul>
+                            <li>产品创新俱乐部主席，联合举办跨校黑客松 6 场。</li>
+                            <li>主修数据分析、商业模式创新、战略管理。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-content">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">复旦大学 · 信息管理与信息系统</div>
+                                <div class="item-subtitle">管理学学士</div>
+                            </div>
+                            <div class="item-meta">2010.09 - 2014.06</div>
+                        </div>
+                        <ul>
+                            <li>两次获得校级一等奖学金，连续四年 GPA 前 10%。</li>
+                            <li>本科毕业论文《基于行为数据的移动产品增长策略研究》获优秀论文。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-title"><span>📚</span> 专业认证 & 兴趣</div>
+                <div class="item">
+                    <div class="item-content">
+                        <div class="badge-row">
+                            <span class="badge">PMI-ACP 敏捷产品管理认证</span>
+                            <span class="badge">哈佛商学院在线：商业分析证书</span>
+                            <span class="badge">TEDx 青年演讲嘉宾</span>
+                            <span class="badge">跑步 & 城市速写</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="footer">
+                <div>持续学习 · 快速试错 · 数据驱动</div>
+                <div>更新时间：<strong>2024 年 6 月</strong></div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
